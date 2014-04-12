@@ -1,0 +1,719 @@
+/*
+Theme Name: ETH
+Theme URI: https://github.com/lukaselmer/ethz-web-engineering-wordpress
+Author: Andreas Nufer, Ivo Nussbaumer, Lukas Elmer
+Author URI: https://github.com/lukaselmer/ethz-web-engineering-wordpress/graphs/contributors
+Description: THE theme for reviewers
+Version: 1.0
+License: The MIT License (MIT)
+License URI: https://raw.githubusercontent.com/lukaselmer/ethz-web-engineering-wordpress/master/LICENSE
+Tags: eth, reviewers
+Text Domain: eth
+*/
+
+/* reset.css */
+
+@import "reset";
+
+/* theme.css */
+
+$textColor: #0b0b0b;
+$linkColor: #000;
+$linkHoverColor: #666;
+$primaryColor: #ffc45e;
+$backgroundColor: #ebebeb;
+$socialLinksColor: #3b73db;
+$footerTextColor: #727272;
+$borderRadius: 10px;
+$backgroundColor2: #d9d9d9;
+$backgroundHoverColor: #fff;
+
+body, input, button, select, textarea {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: $textColor;
+}
+
+body {
+  background: $backgroundColor;
+}
+
+// Same values as twitter bootstrap
+// Same names as twitter bootstrap (for compatibility)
+// http://getbootstrap.com/css/#grid
+
+$screen-xxs-max: 479px;
+// for devices with width <= 480
+$screen-xs-min: 480px;
+// for devices with width 480-767
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+// for devices with width 768-1023
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+// for devices with width 1024-1279
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
+// for devices with width 1280+
+
+$num-columns: 12;
+
+@media (max-width: $screen-xxs-max) {
+  // We could also force the user to use the native app like this: .container { display: none; }
+  .xxs-container {
+    padding: 5%;
+    a {
+      display: block;
+      font-weight: bold;
+      margin: 10px 0 0 0;
+      padding: 10px 16px;
+      border: 1px #ccc solid;
+      border-radius: 6px;
+      text-align: center;
+      background: #fff;
+    }
+  }
+}
+
+@media (min-width: $screen-xs-min) {
+  .xxs-container {
+    display: none;
+  }
+}
+
+@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+  // Nothing to do yet
+}
+
+@media (max-width: $screen-xs-max) {
+  @for $i from 1 through $num-columns {
+    .col-md-#{$i} {
+      margin: 0 0 15px 0;
+      padding: 0 2%;
+    }
+  }
+
+  .col-md-content-left, .col-md-content-center, .col-md-content-right {
+    margin: 0 0 15px 0;
+    padding: 0 2%;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .container {
+    margin: 0px auto;
+  }
+}
+
+//@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+//$colWidth: 60px;
+//.container { width: 750px;}}
+//@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+//$colWidth: 78px;
+//.container { width: 970px; }}
+
+@media (min-width: $screen-sm-min) {
+  $colWidth: 99.9% / $num-columns; //95px;
+
+  .container {
+    max-width: 1250px;
+    width: 100%; // 1170px;
+  }
+  @for $i from 1 through $num-columns {
+    .col-md-#{$i} {
+      float: left;
+      width: $colWidth * $i;
+    }
+    .col-md-offset-#{$i} {
+      margin-left: $colWidth * $i;
+    }
+  }
+
+  .col-md-content-left, .col-md-content-center, .col-md-content-right {
+    float: left;
+  }
+
+  @media (min-width: $screen-md-min) {
+    $colLeftWidth: 14.85%;
+    $colCenterWidth: 64.9%;
+
+    .col-md-content-left {
+      width: $colLeftWidth;
+    }
+    .col-md-content-center {
+      width: $colCenterWidth;
+    }
+    .col-md-content-right {
+      width: 99.99% - $colLeftWidth - $colCenterWidth;
+    }
+    .col-md-offset-left {
+      margin-left: $colLeftWidth;
+    }
+  }
+
+  @media (max-width: $screen-sm-max) {
+    $colCenterWidth: 79%;
+    $colRightWidth: 19.7%;
+
+    .col-md-content-left {
+      width: 99.99%;
+      margin: 0 0 10px 0;
+    }
+    .col-md-content-center {
+      margin-left: 2px;
+      width: $colCenterWidth;
+    }
+    .col-md-content-right {
+      width: $colRightWidth;
+    }
+    .col-md-offset-left {
+      margin-left: 0px;
+    }
+  }
+
+}
+
+.row:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+  &:active, &:hover {
+    //text-decoration: underline;
+    color: $linkHoverColor;
+  }
+}
+
+a.more {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+}
+
+img {
+  border-radius: $borderRadius;
+}
+
+blockquote {
+  display: block;
+  margin: 20px 0;
+  font-style: italic;
+  > div {
+    text-align: right;
+    font-style: normal;
+    font-weight: bold;
+    img {
+      width: 12%;
+    }
+  }
+}
+
+.clearer {
+  clear: both;
+}
+
+h1 {
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 200%;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 200%;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.content-box {
+  border-radius: $borderRadius;
+  background: $primaryColor;
+}
+
+header {
+  nav {
+    text-align: center;
+    margin: 18px 0 14px 0px;
+    ul {
+      display: inline-block;
+      li {
+        float: left;
+        display: block;
+        background: $primaryColor;
+        border: 2px solid $backgroundColor2;
+        margin: 0 2px;
+
+        &:hover {
+          background: $backgroundHoverColor;
+        }
+
+        a {
+          display: block;
+          padding: 5px 5px;
+
+          @media (max-width: $screen-sm-max) {
+            padding: 15px 12px;
+          }
+        }
+
+        &.active {
+          a {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+}
+
+aside {
+  nav {
+    margin: 0 10px 0 2px;
+    padding: 18px 10px 12px 10px;
+
+    div {
+      text-align: center;
+      background: $backgroundColor;
+      font-weight: bold;
+      padding: 1px 0;
+      margin: 2px 0 3px 0;
+    }
+    a {
+      display: block;
+      padding: 7px 0 1px 0;
+      border-bottom: 3px solid $backgroundColor;
+
+      &:hover {
+        background: $backgroundHoverColor;
+      }
+
+      //@media (max-width: $screen-xxs-max) {
+      @media (max-width: $screen-sm-max) {
+        text-align: center;
+        padding: 15px 5px 16px 5px;
+        border: 1px solid $backgroundColor;
+        background: $backgroundColor2;
+        margin: 3px 0;
+      }
+    }
+  }
+}
+
+.main-content {
+  margin: 0 10px 10px 0;
+  padding: 10px 3px;
+
+  > article, a.more-items {
+    background: $backgroundColor;
+    margin: 10px;
+    padding: 10px;
+    border-radius: $borderRadius;
+  }
+
+  .weekly {
+    .image-slider {
+      margin: 0 0 5px 0;
+      .controls {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: $borderRadius 0 $borderRadius 0;
+
+        a {
+          font-weight: bolder;
+          font-size: 1.1em;
+          display: block;
+          float: left;
+          padding: 9px 10px 7px 10px;
+          &.big {
+            font-size: 1.85em;
+            padding: 0 10px 4px 10px;
+          }
+          &:first-child {
+            border-radius: $borderRadius 0 0 0;
+          }
+          &:last-child {
+            border-radius: 0 0 $borderRadius 0;
+          }
+          &:hover, &:active {
+            background: rgba(255, 255, 255, 0.8);
+          }
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+      }
+      .cropped {
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+        cursor: grab;
+        overflow: hidden;
+        border-radius: $borderRadius;
+
+        &.grabbing {
+          cursor: -moz-grabbing;
+          cursor: -webkit-grabbing;
+          cursor: grabbing;
+        }
+
+        img {
+          border-radius: 0;
+          width: auto;
+        }
+
+        @media (min-width: $screen-lg-min) {
+          height: 467px;
+          img {
+            // max width is set so that the zoom is right to see the concert hall
+            max-width: 2400px;
+            // 15px shifted to top
+            // 400px shifted to left
+            margin: -15px 0 0 -400px;
+          }
+        }
+
+        @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+          height: 367px;
+          img {
+            // max width is set so that the zoom is right to see the concert hall
+            max-width: 2400px;
+            // 15px shifted to top
+            // 400px shifted to left
+            margin: -115px 0 0 -500px;
+          }
+        }
+
+        @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+          height: 300px;
+          img {
+            // max width is set so that the zoom is right to see the concert hall
+            max-width: 2400px;
+            // 182px shifted to top
+            // 400px shifted to left
+            margin: -182px 0 0 -520px;
+          }
+        }
+
+        @media (max-width: $screen-xxs-max) {
+          height: 250px;
+          img {
+            // max width is set so that the zoom is right to see the concert hall
+            max-width: 2400px;
+            // 182px shifted to top
+            // 400px shifted to left
+            margin: -232px 0 0 -600px;
+          }
+        }
+      }
+      .thumbnail {
+        .thumbnail-inner {
+          margin: 0 auto; // centers the box
+          max-width: 450px;
+
+          .rectangle {
+            cursor: -moz-grab;
+            cursor: -webkit-grab;
+            cursor: grab;
+            background: rgba(255, 202, 0, 0.30);
+            position: absolute;
+            border-radius: $borderRadius;
+            box-shadow: 0px 0px 2px 3px #000;
+
+            &.grabbing {
+              cursor: -moz-grabbing;
+              cursor: -webkit-grabbing;
+              cursor: grabbing;
+            }
+          }
+          img {
+            cursor: pointer;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .reviewers {
+    h2 {
+      margin: 5px 0 25px 0;
+    }
+    .reviewer-profiles {
+      .reviewer-profile {
+        float: left;
+        width: 50%;
+        @media (max-width: $screen-sm-max) {
+          min-height: 1000px;
+        }
+        @media (max-width: $screen-md-max) {
+          min-height: 126px;
+        }
+        @media (min-width: $screen-lg-min) {
+          min-height: 131px;
+        }
+        //margin: 0 0 10px 0;
+        img {
+          display: block;
+          float: left;
+          width: 29%;
+          margin: 0 7px 20px 0;
+        }
+        .attributes {
+          .name {
+            font-weight: bold;
+            margin: 0 0 6px 0;
+          }
+          .role {
+            margin: 0 0 7px 0;
+          }
+          .cite {
+            padding: 0 5px 0 0;
+          }
+        }
+
+        @media (max-width: $screen-sm-max) {
+          width: 100%;
+        }
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+  }
+
+  .hotel-item {
+    overflow: hidden;
+    > div {
+      overflow: hidden;
+    }
+
+    @media (max-width: $screen-xxs-max) {
+      img {
+        width: 100%;
+        margin: 0 0 5px 0;
+      }
+
+      a.more {
+        margin-bottom: 12px;
+      }
+    }
+    @media (min-width: $screen-xs-min) {
+      img {
+        width: 36.3%;
+        margin-bottom: 10px;
+        margin-right: 8px;
+        float: left;
+      }
+
+      .author {
+        text-align: right;
+      }
+    }
+    &:hover {
+      background: $backgroundHoverColor;
+    }
+  }
+
+  a.more-items {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    &:hover {
+      background: $backgroundHoverColor;
+    }
+  }
+}
+
+.right-content {
+  margin-right: 2px;
+
+  .content-box {
+    padding: 10px 3px;
+    margin-bottom: 10px;
+  }
+
+  .contest-box {
+    /*padding-left: 3px;
+    padding-right: 3px;*/
+    //padding: 0 3px 0 3px;
+    > img {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .social-box {
+    border-radius: $borderRadius;
+    background: $socialLinksColor;
+    padding: 10px 5px 6px 5px;
+    text-align: center;
+
+    a {
+      float: left;
+      display: block;
+      width: 50%;
+
+      text-align: center;
+      img {
+        border-radius: 0;
+        width: 50px;
+        max-width: 50px;
+      }
+    }
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+
+  .reviewers-right-box {
+    a.more {
+      margin-top: 8px;
+    }
+
+    .reviewers-right {
+      .reviewer-right {
+        .name {
+          font-weight: bold;
+          padding: 3px 0 4px 0;
+        }
+
+        .title {
+          font-size: 0.9em;
+        }
+      }
+
+      @media (min-width: $screen-md-min) {
+        .reviewer-right {
+          padding-top: 1px;
+
+          img {
+            margin: 0 1px 5px 0;
+            float: left;
+            width: 30%;
+          }
+
+          &:after {
+            content: '';
+            display: block;
+            clear: both;
+          }
+        }
+      }
+
+      @media (max-width: $screen-xs-max) {
+        .reviewer-right {
+          float: left;
+          width: 50%;
+          img {
+            width: 98%;
+          }
+        }
+      }
+
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        .reviewer-right {
+          padding: 0 0 15px 0;
+          img {
+            width: 100%;
+          }
+        }
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+  }
+
+  .reviews-right-box {
+    .reviews-right {
+      @media (min-width: $screen-sm-min) {
+        .review-right {
+          text-align: center;
+          font-weight: bold;
+          > img {
+            margin: 3px 0;
+            width: 80%;
+          }
+        }
+      }
+      @media (max-width: $screen-xs-max) {
+        .review-right {
+          width: 50%;
+          float: left;
+          text-align: center;
+          font-weight: bold;
+          > img {
+            margin: 3px 0;
+            width: 98%;
+          }
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  color: #999;
+  font-size: 0.75em;
+  margin: 20px 0 50px 0;
+
+  a {
+    color: #999;
+    font-weight: bold;
+  }
+
+  p {
+    margin-top: 1ex;
+  }
+
+  .support {
+    text-align: right;
+    @media (max-width: $screen-xs-max) {
+      text-align: left;
+    }
+    padding: 12px 10px 0 0;
+  }
+}
+
+
