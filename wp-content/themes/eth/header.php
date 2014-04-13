@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="cache.appcache">
+<html lang="en"><!-- for offline app: manifest="cache.appcache" -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="description" content="Provides reviews of the best hotels, and weekly advertise trending or amazing locations to visit."/>
@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--[if lt IE 9]>
-    <script async src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script async src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!--
@@ -29,18 +29,18 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8"/>-->
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>js/jquery.min.js"><' + '/script>');</script>
+    <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"><' + '/script>');</script>
 
-    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-gestures.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-draggable.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-scalable.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-resizable.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-rotatable.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-orientable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch-gestures.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch-draggable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch-scalable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch-resizable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch-rotatable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch-orientable.js"></script>
 
-    <script src="<?php echo get_template_directory_uri(); ?>js/script.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>js/swipe_navi.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/swipe_navi.js"></script>
 
     <!--
     Simulate multi touch for development (if you have a multitouch trackpad (such as a Apple MacBook or MagicPad)
@@ -48,10 +48,10 @@
     https://github.com/borismus/MagicTouch
     http://www.html5rocks.com/en/mobile/touch/
      -->
-    <script src="<?php echo get_template_directory_uri(); ?>js/magictouch.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/magictouch.js"></script>
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
     <?php wp_head(); ?>
 </head>
@@ -80,11 +80,9 @@ http://www.html5rocks.com/en/mobile/touch/
         </div>
         <nav class="row">
             <div class="col-md-12">
-                <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="weekly.html">Weekly Location</a></li>
-                    <li><a href="reviewers.html">Reviewers</a></li>
-                </ul>
+                <?php wp_nav_menu($defaults);
+                // TODO: class=active => show active page
+                ?>
             </div>
         </nav>
     </header>
@@ -100,3 +98,6 @@ http://www.html5rocks.com/en/mobile/touch/
                 <a href="#">Contact us</a>
             </nav>
         </aside>
+
+        <section class="col-md-content-center">
+            <div class="main-content content-box">

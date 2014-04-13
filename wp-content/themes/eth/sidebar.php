@@ -1,3 +1,7 @@
+</div>
+</section>
+
+
 <?php if (mt_rand(0, 1) == 0) { ?>
 
     <aside class="col-md-content-right">
@@ -8,7 +12,7 @@
                 </div>
                 <div class="reviewers-right">
                     <div class="reviewer-right">
-                        <div><img src="images/reviewers/1.png" alt=""/></div>
+                        <div><img src="<?php echo get_template_directory_uri(); ?>/images/reviewers/1.png" alt=""/></div>
 
                         <div>
                             <div class="name">Mr Anderson</div>
@@ -16,7 +20,7 @@
                         </div>
                     </div>
                     <div class="reviewer-right">
-                        <div><img src="images/reviewers/2.png" alt=""/></div>
+                        <div><img src="<?php echo get_template_directory_uri(); ?>/images/reviewers/2.png" alt=""/></div>
 
                         <div>
                             <div class="name">Ms Trinity</div>
@@ -33,7 +37,7 @@
                 <div>
                     <h3>Weekly Location Contest</h3>
                 </div>
-                <img src="images/sydney-harbour-panorama1bl-thumbnail.jpg" alt=""/>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/sydney-harbour-panorama1bl-thumbnail.jpg" alt=""/>
 
                 <div>
                     This week's location is:<br>
@@ -44,8 +48,8 @@
                 </div>
             </section>
             <section class="social-box">
-                <a href="http://facebook.com/"><img src='images/social_media/facebook-icon.png'/></a>
-                <a href="http://twitter.com/"><img src='images/social_media/twitter-icon.png'/></a>
+                <a href="http://facebook.com/"><img src="<?php echo get_template_directory_uri(); ?>/images/social_media/facebook-icon.png"/></a>
+                <a href="http://twitter.com/"><img src="<?php echo get_template_directory_uri(); ?>/images/social_media/twitter-icon.png"/></a>
             </section>
         </div>
     </aside>
@@ -58,11 +62,11 @@
 
                 <div class="reviews-right">
                     <div class="review-right">
-                        <img src="images/reviews/1.png" alt=""/><br>
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/reviews/1.png" alt=""/><br>
                         <span>Mec Paestum Hotel</span>
                     </div>
                     <div class="review-right">
-                        <img src="images/reviews/2.png" alt=""/><br>
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/reviews/2.png" alt=""/><br>
                         <span>Bellevue Palace Bern</span>
                     </div>
                 </div>
@@ -72,7 +76,7 @@
                 <div>
                     <h3>Weekly Location Contest</h3>
                 </div>
-                <img src="images/sydney-harbour-panorama1bl-thumbnail.jpg" alt=""/>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/sydney-harbour-panorama1bl-thumbnail.jpg" alt=""/>
 
                 <div>
                     This week's location is:<br>
@@ -83,8 +87,8 @@
                 </div>
             </section>
             <section class="social-box">
-                <a href="http://facebook.com/"><img src='images/social_media/facebook-icon.png'/></a>
-                <a href="http://twitter.com/"><img src='images/social_media/twitter-icon.png'/></a>
+                <a href="http://facebook.com/"><img src="<?php echo get_template_directory_uri(); ?>/images/social_media/facebook-icon.png"/></a>
+                <a href="http://twitter.com/"><img src="<?php echo get_template_directory_uri(); ?>/images/social_media/twitter-icon.png"/></a>
             </section>
         </div>
     </aside>
