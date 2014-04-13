@@ -83,7 +83,7 @@ http://www.html5rocks.com/en/mobile/touch/
 
                 <h1><a href="/"><?php echo get_bloginfo('name'); ?></a></h1>
 
-                <div class="description"><?php echo get_bloginfo('description'); ?></div>
+                <div class="description"><?php echo((get_header_textcolor() != 'blank') ? get_bloginfo('description') : '&nbsp;'); ?></div>
             </div>
         </div>
         <nav class="row menu-top">
