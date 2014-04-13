@@ -941,7 +941,9 @@ aside nav {
       font-weight: bold; }
       .right-content .reviews-right-box .reviews-right .review-right > img {
         margin: 3px 0;
-        width: 80%; } }
+        width: 80%; }
+      .right-content .reviews-right-box .reviews-right .review-right span {
+        display: block; } }
   @media (max-width: 767px) {
     .right-content .reviews-right-box .reviews-right .review-right {
       width: 50%;
@@ -951,6 +953,8 @@ aside nav {
       .right-content .reviews-right-box .reviews-right .review-right > img {
         margin: 3px 0;
         width: 98%; }
+      .right-content .reviews-right-box .reviews-right .review-right span {
+        display: block; }
     .right-content .reviews-right-box .reviews-right:after {
       content: '';
       display: block;

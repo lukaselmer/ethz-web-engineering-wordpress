@@ -11,25 +11,40 @@
                     <h3>Meet our reviewers!</h3>
                 </div>
                 <div class="reviewers-right">
-                    <div class="reviewer-right">
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/images/reviewers/1.png" alt=""/></div>
 
-                        <div>
-                            <div class="name">Mr Anderson</div>
-                            <div class="title">CEO, Main Reviewer</div>
-                        </div>
-                    </div>
-                    <div class="reviewer-right">
-                        <div><img src="<?php echo get_template_directory_uri(); ?>/images/reviewers/2.png" alt=""/></div>
+                    <?php
+                    $loop = new WP_Query(array('post_type' => 'reviewer', 'orderby' => 'meta_value', 'meta_key' => 'relevance', 'posts_per_page' => 2));
+                    while ($loop->have_posts()) : $loop->the_post();
+                        $custom_fields = get_post_custom();
+                        ?>
 
-                        <div>
-                            <div class="name">Ms Trinity</div>
-                            <div class="title">Assistant, Reviewer, Board Member</div>
+                        <div class="reviewer-right">
+                            <div>
+                                <?php if (has_post_thumbnail()) {
+                                    $str = get_the_post_thumbnail(get_the_ID(), 'full');
+                                    $str = preg_replace('/width=\"\d+\"/', '', $str);
+                                    $str = preg_replace('/height=\"\d+\"/', '', $str);
+                                    $str = preg_replace('/attachment-full /', '', $str);
+                                    echo $str;
+                                } ?>
+                            </div>
+
+                            <div>
+                                <div class="name"><?php the_title() ?></div>
+                                <div class="title"><?php
+                                    $t = $custom_fields['title'][0];
+                                    $r = $custom_fields['role'][0];
+                                    echo $t . ($t ? ', ' : '') . $r;
+                                    ?></div>
+                                <?php edit_post_link(); ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php
+                    endwhile; ?>
+
                 </div>
                 <div>
-                    <a class="more" href="reviewers.html">Meet them all!</a>
+                    <a class="more" href="/reviewers">Meet them all!</a>
                 </div>
 
             </section>
@@ -61,14 +76,33 @@
                 <h3>Our last reviews!</h3>
 
                 <div class="reviews-right">
-                    <div class="review-right">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/reviews/1.png" alt=""/><br>
-                        <span>Mec Paestum Hotel</span>
-                    </div>
-                    <div class="review-right">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/reviews/2.png" alt=""/><br>
-                        <span>Bellevue Palace Bern</span>
-                    </div>
+
+                    <?php
+                    $loop = new WP_Query(array('posts_per_page' => 3));
+                    while ($loop->have_posts()) : $loop->the_post();
+                        $custom_fields = get_post_custom();
+                        ?>
+
+                        <div class="review-right">
+                            <?php edit_post_link(); ?>
+                            <?php if (has_post_thumbnail()) {
+                                $str = get_the_post_thumbnail(get_the_ID(), 'full');
+                                $str = preg_replace('/width=\"\d+\"/', '', $str);
+                                $str = preg_replace('/height=\"\d+\"/', '', $str);
+                                $str = preg_replace('/attachment-full /', '', $str);
+                                echo $str;
+                            } ?>
+
+                            <?php
+                            $title = get_the_title();
+                            $title = explode('*', $title)[0];
+                            $title = str_replace("Hotel ", "", $title);
+                            ?>
+                            <span><?php echo $title ?></span>
+                        </div>
+
+                    <?php
+                    endwhile; ?>
                 </div>
             </section>
 

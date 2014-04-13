@@ -681,6 +681,9 @@ aside {
             margin: 3px 0;
             width: 80%;
           }
+          span {
+            display: block;
+          }
         }
       }
       @media (max-width: $screen-xs-max) {
@@ -692,6 +695,9 @@ aside {
           > img {
             margin: 3px 0;
             width: 98%;
+          }
+          span {
+            display: block;
           }
         }
 
