@@ -25,8 +25,7 @@
     -->
 
     <title><?php echo get_bloginfo('name'); ?><?php wp_title(); ?></title>
-    <!--<link rel="stylesheet" href="css/reset.css" type="text/css" charset="utf-8"/>
-    <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8"/>-->
+    <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" charset="utf-8"/>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"><' + '/script>');</script>
