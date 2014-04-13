@@ -24,23 +24,23 @@
     <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/slate/bootstrap.min.css" rel="stylesheet">
     -->
 
-    <title>Evaluate Thy Hotel</title>
-    <link rel="stylesheet" href="css/reset.css" type="text/css" charset="utf-8"/>
-    <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8"/>
+    <title><?php wp_title( '|', true, 'right' ); ?> - <?php echo get_bloginfo("name"); ?></title>
+    <!--<link rel="stylesheet" href="css/reset.css" type="text/css" charset="utf-8"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8"/>-->
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><' + '/script>');</script>
+    <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>js/jquery.min.js"><' + '/script>');</script>
 
-    <script src="js/jqmt/jquery.multitouch.js"></script>
-    <script src="js/jqmt/jquery.multitouch-gestures.js"></script>
-    <script src="js/jqmt/jquery.multitouch-draggable.js"></script>
-    <script src="js/jqmt/jquery.multitouch-scalable.js"></script>
-    <script src="js/jqmt/jquery.multitouch-resizable.js"></script>
-    <script src="js/jqmt/jquery.multitouch-rotatable.js"></script>
-    <script src="js/jqmt/jquery.multitouch-orientable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-gestures.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-draggable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-scalable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-resizable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-rotatable.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/jqmt/jquery.multitouch-orientable.js"></script>
 
-    <script src="js/script.js"></script>
-    <script src="js/swipe_navi.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/script.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/swipe_navi.js"></script>
 
     <!--
     Simulate multi touch for development (if you have a multitouch trackpad (such as a Apple MacBook or MagicPad)
@@ -48,9 +48,14 @@
     https://github.com/borismus/MagicTouch
     http://www.html5rocks.com/en/mobile/touch/
      -->
-    <script src="js/magictouch.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>js/magictouch.js"></script>
+
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+
+    <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 
 <!--
 Simulate multi touch for development (if you have a multitouch trackpad (such as a Apple MacBook or MagicPad)
@@ -70,7 +75,7 @@ http://www.html5rocks.com/en/mobile/touch/
     <header>
         <div class="row ">
             <div class="col-md-12">
-                <h1><a href="#">Evaluate Thy Hotel</a></h1>
+                <h1><a href="#"><?php echo get_bloginfo("name"); ?></a></h1>
             </div>
         </div>
         <nav class="row">
