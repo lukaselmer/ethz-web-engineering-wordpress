@@ -87,3 +87,9 @@ function save_reviewer_meta_options() {
 add_action('admin_init', 'admin_init');
 add_action('save_post', 'save_reviewer_meta_options');
 
+
+function eth_theme_setup() {
+    add_theme_support('custom-background', array('default-color' => 'ebebeb',));
+}
+
+add_action('after_setup_theme', 'eth_theme_setup');
