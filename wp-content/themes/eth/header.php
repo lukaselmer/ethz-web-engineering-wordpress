@@ -2,7 +2,7 @@
 <html lang="en"><!-- for offline app: manifest="cache.appcache" -->
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="description" content="Provides reviews of the best hotels, and weekly advertise trending or amazing locations to visit."/>
+    <meta name="description" content="<?php echo get_bloginfo('description'); ?>"/>
     <meta name="keywords" content="Hotels, Reviews, Travel, ETH"/>
     <meta name="author" content="Andreas Nufer, Ivo Nussbaumer, Lukas Elmer"/>
     <meta name="robots" content="index, follow"/>
@@ -75,7 +75,8 @@ http://www.html5rocks.com/en/mobile/touch/
     <header>
         <div class="row ">
             <div class="col-md-12">
-                <h1><a href="#"><?php echo get_bloginfo('name'); ?></a></h1>
+                <h1><a href="/"><?php echo get_bloginfo('name'); ?></a></h1>
+                <div class="description"><?php echo get_bloginfo('description'); ?></div>
             </div>
         </div>
         <nav class="row">

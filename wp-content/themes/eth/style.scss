@@ -10,9 +10,7 @@ License URI: https://raw.githubusercontent.com/lukaselmer/ethz-web-engineering-w
 Tags: eth, reviewers
 Text Domain: eth
 */
-
 /* reset.css */
-
 @import "reset";
 
 /* theme.css */
@@ -215,14 +213,21 @@ blockquote {
   clear: both;
 }
 
-h1 {
-  margin-top: 5px;
-  font-weight: bold;
-  text-align: center;
-  font-size: 200%;
+header {
+  h1 {
+    margin-top: 5px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2em;
 
-  a {
-    text-decoration: none;
+    a {
+      text-decoration: none;
+    }
+  }
+  .description {
+    text-align: center;
+    font-size: 0.8em;
+    color: #333;
   }
 }
 
