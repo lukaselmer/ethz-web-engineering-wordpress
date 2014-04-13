@@ -28,11 +28,11 @@ function create_reviewer_post_type() {
             'hierarchical' => false,
             'rewrite' => array('slug' => 'reviewers'),
             'supports' => array('title', 'thumbnail'),
-            'publicly_queryable' => true,
+            'publicly_queryable' => false,
         )
     );
 }
-
+//flush_rewrite_rules(true);
 add_action('init', 'create_reviewer_post_type');
 
 
