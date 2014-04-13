@@ -41,10 +41,6 @@ get_header();
 </article>
 
 <?php
-/**
- * Template Name: List the reviewers
- */
+
 get_sidebar();
 get_footer();
-
-?>
