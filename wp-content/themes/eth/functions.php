@@ -93,3 +93,22 @@ function eth_theme_setup() {
 }
 
 add_action('after_setup_theme', 'eth_theme_setup');
+
+
+function eth_customize_register($wp_customize) {
+    function add_color_option($wp_customize, $key, $default) {
+        $name = ucwords(str_replace('_', ' ', $key));
+        // TODO: use postMessage and JS instead of refresh as transport method... https://codex.wordpress.org/Theme_Customization_API
+        $wp_customize->add_setting($key, array('default' => $default, 'transport' => 'refresh',));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $key,
+            array('label' => __($name, 'eth'), 'section' => 'colors', 'settings' => $key)));
+    }
+
+    add_color_option($wp_customize, 'menu_top_color', '#ffc45e');
+    add_color_option($wp_customize, 'menu_left_color', '#ffc45e');
+    add_color_option($wp_customize, 'menu_right_color', '#ffc45e');
+    add_color_option($wp_customize, 'headlines_color', '#000000');
+    add_color_option($wp_customize, 'article_text_color', '#0b0b0b');
+}
+
+add_action('customize_register', 'eth_customize_register');
