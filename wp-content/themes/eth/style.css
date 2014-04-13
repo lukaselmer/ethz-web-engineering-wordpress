@@ -683,7 +683,7 @@ header nav {
         @media (max-width: 991px) {
           header nav ul li a {
             padding: 15px 12px; } }
-      header nav ul li.active a {
+      header nav ul li.current_page_item a {
         font-weight: bold; }
   header nav:after {
     content: '';

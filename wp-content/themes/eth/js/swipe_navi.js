@@ -9,9 +9,9 @@ $(document).ready(function () {
 
     this.findCurrentIndex = function () {
       for (var i = 0; i < navElements.length; ++i) {
-        if ($(navElements[i]).hasClass("active")) return i;
+        if ($(navElements[i]).hasClass("current_page_item")) return i;
       }
-      console.error("No active navigation element found!")
+      console.error("No active navigation element found!");
     };
 
     this.findElement = function (offset) {
