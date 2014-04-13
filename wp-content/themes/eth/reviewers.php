@@ -5,16 +5,15 @@
 
 get_header();
 
-$loop = new WP_Query(array('post_type' => 'reviewer', 'orderby' => 'meta_value', 'meta_key' => 'relevance'));
 ?>
 
 <article class="reviewers">
     <h2><a href="#">Evaluate Thy Hotel</a></h2>
 
-
     <div class="reviewer-profiles">
 
         <?php
+        $loop = new WP_Query(array('post_type' => 'reviewer', 'orderby' => 'meta_value', 'meta_key' => 'relevance'));
         while ($loop->have_posts()) : $loop->the_post();
             $custom_fields = get_post_custom();
             ?>
@@ -32,6 +31,7 @@ $loop = new WP_Query(array('post_type' => 'reviewer', 'orderby' => 'meta_value',
                     <div class="title"><?php echo $custom_fields['title'][0] ?></div>
                     <div class="role"><?php echo $custom_fields['role'][0] ?></div>
                     <div class="cite"><?php echo $custom_fields['cite'][0] ?></div>
+                    <?php edit_post_link(); ?>
                 </div>
             </div>
         <?php
