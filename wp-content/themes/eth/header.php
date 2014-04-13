@@ -80,7 +80,6 @@ http://www.html5rocks.com/en/mobile/touch/
     <header>
         <div class="row ">
             <div class="col-md-12">
-
                 <h1><a href="/"><?php echo get_bloginfo('name'); ?></a></h1>
 
                 <div class="description"><?php echo((get_header_textcolor() != 'blank') ? get_bloginfo('description') : '&nbsp;'); ?></div>
