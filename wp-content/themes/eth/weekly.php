@@ -33,12 +33,16 @@ get_header();
             the_content();
             edit_post_link();
             $custom_fields = get_post_custom();
+
             $cite = $custom_fields['cite'][0];
+            if(!isset($cite)) update_post_meta($post->ID, 'cite', '"A life without travel is a life unlived"');
+
             $author = $custom_fields['author'][0];
+            if(!isset($author)) update_post_meta($post->ID, 'author', 'Mr. Anderson');
             ?>
 
             <blockquote>
-                "<?php echo $cite ?>"
+                <?php echo $cite ?>
 
                 <div>
                     <?php if (has_post_thumbnail()) {
