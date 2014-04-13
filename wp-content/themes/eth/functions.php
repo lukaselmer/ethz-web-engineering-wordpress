@@ -98,7 +98,6 @@ add_action('after_setup_theme', 'eth_theme_setup');
 function eth_customize_register($wp_customize) {
     function add_color_option($wp_customize, $key, $default) {
         $name = ucwords(str_replace('_', ' ', $key));
-        // TODO: use postMessage and JS instead of refresh as transport method... https://codex.wordpress.org/Theme_Customization_API
         $wp_customize->add_setting($key, array('default' => $default, 'transport' => 'refresh',));
         $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $key,
             array('label' => __($name, 'eth'), 'section' => 'colors', 'settings' => $key)));
