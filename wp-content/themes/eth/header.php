@@ -24,7 +24,7 @@
     <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/slate/bootstrap.min.css" rel="stylesheet">
     -->
 
-    <title><?php wp_title( '|', true, 'right' ); ?> - <?php echo get_bloginfo("name"); ?></title>
+    <title><?php echo get_bloginfo('name'); ?><?php wp_title(); ?></title>
     <!--<link rel="stylesheet" href="css/reset.css" type="text/css" charset="utf-8"/>
     <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8"/>-->
 
