@@ -29,24 +29,32 @@ get_header();
         </div>
 
 
-        <h3>This week's winner is... Sydney, Australia</h3>
+        <?php while (have_posts()) : the_post();
+            the_content();
+            edit_post_link();
+            $custom_fields = get_post_custom();
+            $cite = $custom_fields['cite'][0];
+            $author = $custom_fields['author'][0];
+            ?>
 
-        <p>
-            Sydney is the state capital of New South Wales and the most populous city in Australia. It is on
-            Australia's south-east coast, on the Tasman Sea. In June 2010 the greater metropolitan area had an
-            approximate population of 4.6 million people. Inhabitants of Sydney are called Sydneysiders, comprising
-            a cosmopolitan and international population.
-        </p>
+            <blockquote>
+                "<?php echo $cite ?>"
 
-        <blockquote>
-            "A life without travel is a life unlived"
+                <div>
+                    <?php if (has_post_thumbnail()) {
+                        $str = get_the_post_thumbnail(get_the_ID(), 'full');
+                        $str = preg_replace('/width=\"\d+\"/', '', $str);
+                        $str = preg_replace('/height=\"\d+\"/', '', $str);
+                        $str = preg_replace('/attachment-full /', '', $str);
+                        echo $str;
+                    } ?>
 
-            <div>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/reviewers/1.png" alt=""/>
+                    <div><?php echo $author ?></div>
+                </div>
+            </blockquote>
+        <?php endwhile; ?>
 
-                <div>Mr. Anderson</div>
-            </div>
-        </blockquote>
+
     </article>
 
 <?php
