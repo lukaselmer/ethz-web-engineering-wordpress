@@ -32,6 +32,7 @@ function create_reviewer_post_type() {
         )
     );
 }
+
 //flush_rewrite_rules(true);
 add_action('init', 'create_reviewer_post_type');
 
@@ -74,9 +75,13 @@ function reviewer_meta_options() {
 
 function save_reviewer_meta_options() {
     global $post;
-    update_post_meta($post->ID, "relevance", intval($_POST["relevance"]));
+
+    if (isset($_POST["relevance"]))
+        update_post_meta($post->ID, "relevance", intval($_POST["relevance"]));
+
     foreach (array("title", "role", "cite") as $val)
-        update_post_meta($post->ID, $val, $_POST[$val]);
+        if (isset($_POST[$val]))
+            update_post_meta($post->ID, $val, $_POST[$val]);
 }
 
 add_action('admin_init', 'admin_init');
