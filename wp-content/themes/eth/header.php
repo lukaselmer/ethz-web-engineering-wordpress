@@ -75,14 +75,12 @@ http://www.html5rocks.com/en/mobile/touch/
     <header>
         <div class="row ">
             <div class="col-md-12">
-                <h1><a href="#"><?php echo get_bloginfo("name"); ?></a></h1>
+                <h1><a href="#"><?php echo get_bloginfo('name'); ?></a></h1>
             </div>
         </div>
         <nav class="row">
             <div class="col-md-12">
-                <?php wp_nav_menu($defaults);
-                // TODO: class=active => show active page
-                ?>
+                <?php wp_nav_menu(array('theme_location' => 'top')); ?>
             </div>
         </nav>
     </header>
@@ -90,12 +88,8 @@ http://www.html5rocks.com/en/mobile/touch/
     <div class="row">
         <aside class="col-md-content-left">
             <nav class="content-box">
-                <div>Menu</div>
-                <a href="#">Reviewed Hotels</a>
-                <a href="#">Get Reviewed</a>
-                <a href="#">Guidelines</a>
-                <a href="#">User Feedback</a>
-                <a href="#">Contact us</a>
+                <div class="title">Menu</div>
+                <?php wp_nav_menu(array('theme_location' => 'left')); ?>
             </nav>
         </aside>
 

@@ -693,20 +693,20 @@ header nav {
 aside nav {
   margin: 0 10px 0 2px;
   padding: 18px 10px 12px 10px; }
-  aside nav div {
+  aside nav .title {
     text-align: center;
     background: #ebebeb;
     font-weight: bold;
     padding: 1px 0;
     margin: 2px 0 3px 0; }
-  aside nav a {
+  aside nav ul li a {
     display: block;
     padding: 7px 0 1px 0;
     border-bottom: 3px solid #ebebeb; }
-    aside nav a:hover {
+    aside nav ul li a:hover {
       background: white; }
     @media (max-width: 991px) {
-      aside nav a {
+      aside nav ul li a {
         text-align: center;
         padding: 15px 5px 16px 5px;
         border: 1px solid #ebebeb;

@@ -235,23 +235,23 @@ function wp_nav_menu( $args = array() ) {
 	$menu = wp_get_nav_menu_object( $args->menu );
 
 	// Get the nav menu based on the theme_location
-	if ( ! $menu && $args->theme_location && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $args->theme_location ] ) )
-		$menu = wp_get_nav_menu_object( $locations[ $args->theme_location ] );
+    if ( ! $menu && $args->theme_location && ( $locations = get_nav_menu_locations() ) && isset( $locations[ $args->theme_location ] ) )
+        $menu = wp_get_nav_menu_object( $locations[ $args->theme_location ] );
 
-	// get the first menu that has items if we still can't find a menu
-	if ( ! $menu && !$args->theme_location ) {
-		$menus = wp_get_nav_menus();
-		foreach ( $menus as $menu_maybe ) {
-			if ( $menu_items = wp_get_nav_menu_items( $menu_maybe->term_id, array( 'update_post_term_cache' => false ) ) ) {
-				$menu = $menu_maybe;
-				break;
-			}
-		}
-	}
+    // get the first menu that has items if we still can't find a menu
+    if ( ! $menu && !$args->theme_location ) {
+        $menus = wp_get_nav_menus();
+        foreach ( $menus as $menu_maybe ) {
+            if ( $menu_items = wp_get_nav_menu_items( $menu_maybe->term_id, array( 'update_post_term_cache' => false ) ) ) {
+                $menu = $menu_maybe;
+                break;
+            }
+        }
+    }
 
-	// If the menu exists, get its items.
-	if ( $menu && ! is_wp_error($menu) && !isset($menu_items) )
-		$menu_items = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
+    // If the menu exists, get its items.
+    if ( $menu && ! is_wp_error($menu) && !isset($menu_items) )
+        $menu_items = wp_get_nav_menu_items( $menu->term_id, array( 'update_post_term_cache' => false ) );
 
 	/*
 	 * If no menu was found:
@@ -261,14 +261,14 @@ function wp_nav_menu( $args = array() ) {
 	 *  - Fall back, but only if no theme location was specified.
 	 *  - Otherwise, bail.
 	 */
-	if ( ( !$menu || is_wp_error($menu) || ( isset($menu_items) && empty($menu_items) && !$args->theme_location ) )
-		&& $args->fallback_cb && is_callable( $args->fallback_cb ) )
-			return call_user_func( $args->fallback_cb, (array) $args );
+    if ( ( !$menu || is_wp_error($menu) || ( isset($menu_items) && empty($menu_items) && !$args->theme_location ) )
+        && $args->fallback_cb && is_callable( $args->fallback_cb ) )
+        return call_user_func( $args->fallback_cb, (array) $args );
 
-	if ( ! $menu || is_wp_error( $menu ) )
-		return false;
+    if ( ! $menu || is_wp_error( $menu ) )
+        return false;
 
-	$nav_menu = $items = '';
+    $nav_menu = $items = '';
 
 	$show_container = false;
 	if ( $args->container ) {
@@ -280,12 +280,12 @@ function wp_nav_menu( $args = array() ) {
 		 * @param array The acceptable HTML tags for use as menu containers, defaults as 'div' and 'nav'.
 		 */
 		$allowed_tags = apply_filters( 'wp_nav_menu_container_allowedtags', array( 'div', 'nav' ) );
-		if ( in_array( $args->container, $allowed_tags ) ) {
-			$show_container = true;
-			$class = $args->container_class ? ' class="' . esc_attr( $args->container_class ) . '"' : ' class="menu-'. $menu->slug .'-container"';
-			$id = $args->container_id ? ' id="' . esc_attr( $args->container_id ) . '"' : '';
-			$nav_menu .= '<'. $args->container . $id . $class . '>';
-		}
+        if ( in_array( $args->container, $allowed_tags ) ) {
+            $show_container = true;
+            $class = $args->container_class ? ' class="' . esc_attr( $args->container_class ) . '"' : ' class="menu-'. $menu->slug .'-container"';
+            $id = $args->container_id ? ' id="' . esc_attr( $args->container_id ) . '"' : '';
+            $nav_menu .= '<'. $args->container . $id . $class . '>';
+        }
 	}
 
 	// Set up the $menu_item variables
@@ -324,13 +324,13 @@ function wp_nav_menu( $args = array() ) {
 	if ( ! empty( $args->menu_id ) ) {
 		$wrap_id = $args->menu_id;
 	} else {
-		$wrap_id = 'menu-' . $menu->slug;
-		while ( in_array( $wrap_id, $menu_id_slugs ) ) {
-			if ( preg_match( '#-(\d+)$#', $wrap_id, $matches ) )
-				$wrap_id = preg_replace('#-(\d+)$#', '-' . ++$matches[1], $wrap_id );
-			else
-				$wrap_id = $wrap_id . '-1';
-		}
+        $wrap_id = 'menu-' . $menu->slug;
+        while ( in_array( $wrap_id, $menu_id_slugs ) ) {
+            if ( preg_match( '#-(\d+)$#', $wrap_id, $matches ) )
+                $wrap_id = preg_replace('#-(\d+)$#', '-' . ++$matches[1], $wrap_id );
+            else
+                $wrap_id = $wrap_id . '-1';
+        }
 	}
 	$menu_id_slugs[] = $wrap_id;
 

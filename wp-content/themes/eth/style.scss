@@ -292,14 +292,14 @@ aside {
     margin: 0 10px 0 2px;
     padding: 18px 10px 12px 10px;
 
-    div {
+    .title {
       text-align: center;
       background: $backgroundColor;
       font-weight: bold;
       padding: 1px 0;
       margin: 2px 0 3px 0;
     }
-    a {
+    ul li a {
       display: block;
       padding: 7px 0 1px 0;
       border-bottom: 3px solid $backgroundColor;
