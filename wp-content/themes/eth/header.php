@@ -78,7 +78,7 @@ http://www.html5rocks.com/en/mobile/touch/
                 <div class="description"><?php echo get_bloginfo('description'); ?></div>
             </div>
         </div>
-        <nav class="row">
+        <nav class="row menu-top">
             <div class="col-md-12">
                 <?php wp_nav_menu(array('theme_location' => 'top')); ?>
             </div>
@@ -87,7 +87,7 @@ http://www.html5rocks.com/en/mobile/touch/
 
     <div class="row">
         <aside class="col-md-content-left">
-            <nav class="content-box">
+            <nav class="content-box menu-left">
                 <div class="title">Menu</div>
                 <?php wp_nav_menu(array('theme_location' => 'left')); ?>
             </nav>

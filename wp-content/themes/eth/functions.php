@@ -104,11 +104,37 @@ function eth_customize_register($wp_customize) {
             array('label' => __($name, 'eth'), 'section' => 'colors', 'settings' => $key)));
     }
 
+    /*add_color_option($wp_customize, 'menu_top_color', '#ffc45e');
+    add_color_option($wp_customize, 'menu_left_color', '#ffc45e');
+    add_color_option($wp_customize, 'menu_right_color', '#ffc45e');
+    add_color_option($wp_customize, 'headlines_color', '#ffffff');
+    add_color_option($wp_customize, 'article_text_color', '#0b0b0b');*/
+
     add_color_option($wp_customize, 'menu_top_color', '#ffc45e');
     add_color_option($wp_customize, 'menu_left_color', '#ffc45e');
     add_color_option($wp_customize, 'menu_right_color', '#ffc45e');
+    add_color_option($wp_customize, 'box_center_color', '#ffc45e');
+    add_color_option($wp_customize, 'box_center_inner_color', '#ebebeb');
     add_color_option($wp_customize, 'headlines_color', '#000000');
     add_color_option($wp_customize, 'article_text_color', '#0b0b0b');
+    add_color_option($wp_customize, 'footer_text_color', '#999999');
 }
 
 add_action('customize_register', 'eth_customize_register');
+
+function eth_customize_css() {
+    ?>
+    <style type="text/css">
+        h1 a { color: <?php echo get_theme_mod('headlines_color'); ?>; }
+        nav.menu-left { background: <?php echo get_theme_mod('menu_left_color'); ?>; }
+        nav.menu-top ul li { background: <?php echo get_theme_mod('menu_top_color'); ?>; }
+        .right-content .content-box { background: <?php echo get_theme_mod('menu_right_color'); ?>; }
+        .main-content.content-box { background: <?php echo get_theme_mod('box_center_color'); ?> !important; }
+        .main-content.content-box > article { background: <?php echo get_theme_mod('box_center_inner_color'); ?> !important; }
+        article { color: <?php echo get_theme_mod('article_text_color'); ?>; }
+        footer, footer a { color: <?php echo get_theme_mod('footer_text_color'); ?>; }
+    </style>
+<?php
+}
+
+add_action('wp_head', 'eth_customize_css');
