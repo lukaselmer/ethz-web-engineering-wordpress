@@ -72,8 +72,8 @@ http://www.html5rocks.com/en/mobile/touch/
 </div>
 
 <div class="header-image">
-    <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>"
-         alt="header image"/>
+    <?php $ch = get_custom_header() ?>
+    <img src="<?php header_image(); ?>" height="<?php echo $ch->height; ?>" width="<?php echo $ch->width; ?>" alt="header image"/>
 </div>
 
 <div class="container">
