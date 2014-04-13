@@ -517,6 +517,12 @@ aside {
     > div {
       overflow: hidden;
     }
+    a.post-edit-link {
+      display: block;
+      color: #000;
+      margin: 10px 0 0 0;
+      font-size: 0.8em;
+    }
 
     @media (max-width: $screen-xxs-max) {
       img {
