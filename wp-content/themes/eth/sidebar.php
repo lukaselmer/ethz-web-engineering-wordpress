@@ -59,7 +59,7 @@
                     <span>Sydney, Australia</span>
                 </div>
                 <div>
-                    <a class="more" href="weekly.html">Have a look!</a>
+                    <a class="more" href="/weekly">Have a look!</a>
                 </div>
             </section>
             <section class="social-box">
@@ -117,7 +117,7 @@
                     <span>Sydney, Australia</span>
                 </div>
                 <div>
-                    <a href="weekly.html">Have a look!</a>
+                    <a href="/weekly">Have a look!</a>
                 </div>
             </section>
             <section class="social-box">
