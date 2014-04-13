@@ -62,7 +62,7 @@ Simulate multi touch for development (if you have a multitouch trackpad (such as
 https://github.com/borismus/MagicTouch
 http://www.html5rocks.com/en/mobile/touch/
  -->
-<object id="tuio" type="application/x-tuio" style="width: 0px; height: 0px;"></object>
+<object id="tuio" type="application/x-tuio" style="width: 0px; height: 0px; position: absolute;"></object>
 
 <div class="xxs-container">
     <div>Hey there! Would you like to use the local App from the App store? It provides several advantages, check it out!</div>
@@ -70,11 +70,19 @@ http://www.html5rocks.com/en/mobile/touch/
     <a href="https://itunes.apple.com/us/app/hotels.com-hotel-booking-last/id284971959?mt=8">iPhone</a>
     <a href="http://www.windowsphone.com/en-us/store/app/hotels-com/2768058a-8146-4ede-a146-c22b3d50cdaa">Windows Phone 8</a>
 </div>
+
+<div class="header-image">
+    <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>"
+         alt="header image"/>
+</div>
+
 <div class="container">
     <header>
         <div class="row ">
             <div class="col-md-12">
+
                 <h1><a href="/"><?php echo get_bloginfo('name'); ?></a></h1>
+
                 <div class="description"><?php echo get_bloginfo('description'); ?></div>
             </div>
         </div>

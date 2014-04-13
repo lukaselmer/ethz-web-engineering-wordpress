@@ -491,6 +491,14 @@ body {
 @media (min-width: 768px) {
   .container {
     margin: 0px auto; } }
+.header-image {
+  position: absolute;
+  z-index: -10;
+  text-align: center;
+  width: 99.99%; }
+  .header-image img {
+    border-radius: 0; }
+
 @media (min-width: 768px) {
   .container {
     max-width: 1250px;

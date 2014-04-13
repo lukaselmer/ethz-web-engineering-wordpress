@@ -90,6 +90,8 @@ add_action('save_post', 'save_reviewer_meta_options');
 
 function eth_theme_setup() {
     add_theme_support('custom-background', array('default-color' => 'ebebeb',));
+    add_theme_support('custom-header', array('width' => 2560, 'height' => 64, 'uploads' => true,
+        'default-image' => get_template_directory_uri() . '/images/header.jpg',));
 }
 
 add_action('after_setup_theme', 'eth_theme_setup');
