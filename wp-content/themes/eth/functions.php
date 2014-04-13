@@ -119,7 +119,7 @@ add_action('customize_register', 'eth_customize_register');
 function eth_customize_css() {
     ?>
     <style type="text/css">
-        h1 a, header .description { color: #<?php echo get_header_textcolor() ?>; }
+        h1 a, header .description { color: <?php echo "#" . get_header_textcolor() ?>; }
         nav.menu-left { background: <?php echo get_theme_mod('menu_left_color'); ?>; }
         nav.menu-top ul li { background: <?php echo get_theme_mod('menu_top_color'); ?>; }
         .right-content .content-box { background: <?php echo get_theme_mod('menu_right_color'); ?>; }
