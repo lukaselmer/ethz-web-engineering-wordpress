@@ -105,11 +105,6 @@ function eth_customize_register($wp_customize) {
             array('label' => __($name, 'eth'), 'section' => 'colors', 'settings' => $key)));
     }
 
-    /*add_color_option($wp_customize, 'menu_top_color', '#ffc45e');
-    add_color_option($wp_customize, 'menu_left_color', '#ffc45e');
-    add_color_option($wp_customize, 'menu_right_color', '#ffc45e');
-    add_color_option($wp_customize, 'article_text_color', '#0b0b0b');*/
-
     add_color_option($wp_customize, 'menu_top_color', '#ffc45e');
     add_color_option($wp_customize, 'menu_left_color', '#ffc45e');
     add_color_option($wp_customize, 'menu_right_color', '#ffc45e');
