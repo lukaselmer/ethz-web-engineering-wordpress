@@ -1,7 +1,7 @@
 <?php get_header();
 
 while (have_posts()) : the_post(); ?>
-    <article class="hotel-item">
+    <article class="default-item">
         <div>
             <h3><?php the_title() ?></h3>
             <?php if (has_post_thumbnail()) the_post_thumbnail() ?>

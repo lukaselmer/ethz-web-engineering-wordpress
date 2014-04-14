@@ -1,15 +1,16 @@
-<?php get_header(); ?>
+<?php get_header();
 
-<?php
-$r = mt_rand(0, 2);
-if ($r == 0)
-    include("reviews.php");
-elseif ($r == 1)
-    include("weekly.php");
-else
-    include("reviewers.php");
-?>
+while (have_posts()) : the_post(); ?>
+    <article class="default-item">
+        <div>
+            <h3><?php the_title() ?></h3>
+            <?php if (has_post_thumbnail()) the_post_thumbnail() ?>
+            <p><?php the_content() ?></p>
+            <p>Uploaded by <?php the_author() ?></p>
+            <p>Uploaded at <?php the_date() ?></p>
+        </div>
+    </article>
+<?php endwhile;
 
-<?php get_sidebar(); ?>
-
-<?php get_footer(); ?>
+get_sidebar();
+get_footer();
