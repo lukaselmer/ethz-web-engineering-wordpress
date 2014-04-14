@@ -61,7 +61,7 @@ function panorama_assets() {
     wp_register_style('panoramaviewer', plugins_url('panoramaviewer/panorama.css'));
     wp_enqueue_style('panoramaviewer');
 
-    wp_register_script('panoramaviewer', plugins_url('panoramaviewer/js/panorama.js'));
+    wp_register_script('panoramaviewer', plugins_url('panoramaviewer/js/panorama.js'), array('jquery'));
     wp_enqueue_script('panoramaviewer');
 }
 

@@ -9,7 +9,8 @@
  };
  })();*/
 
-
+(function(){
+var $ = jQuery;
 $(document).ready(function () {
   function Vector(_x, _y) {
     var x = _x, y = _y;
@@ -636,3 +637,4 @@ $(document).ready(function () {
 
 
 });
+})();
