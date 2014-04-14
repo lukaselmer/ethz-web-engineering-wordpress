@@ -3,6 +3,7 @@
  * Template Name: Weekly Contest
  */
 
+
 get_header();
 
 ?>

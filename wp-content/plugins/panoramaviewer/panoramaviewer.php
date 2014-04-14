@@ -55,3 +55,14 @@ class PageTemplateHook {
 }
 
 add_action('plugins_loaded', array('PageTemplateHook', 'get_instance'));
+
+
+function panorama_assets() {
+    wp_register_style('panoramaviewer', plugins_url('panoramaviewer/panorama.css'));
+    wp_enqueue_style('panoramaviewer');
+
+    wp_register_script('panoramaviewer', plugins_url('panoramaviewer/panorama.js'));
+    wp_enqueue_script('panoramaviewer');
+}
+
+add_action('wp_enqueue_scripts', 'panorama_assets');

@@ -1,0 +1,155 @@
+$textColor: #0b0b0b;
+$linkColor: #000;
+$linkHoverColor: #666;
+$primaryColor: #ffc45e;
+$backgroundColor: #ebebeb;
+$socialLinksColor: #3b73db;
+$footerTextColor: #727272;
+$borderRadius: 10px;
+$backgroundColor2: #d9d9d9;
+$backgroundHoverColor: #fff;
+
+// Same values as twitter bootstrap
+// Same names as twitter bootstrap (for compatibility)
+// http://getbootstrap.com/css/#grid
+
+$screen-xxs-max: 479px;
+// for devices with width <= 480
+$screen-xs-min: 480px;
+// for devices with width 480-767
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+// for devices with width 768-1023
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+// for devices with width 1024-1279
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
+// for devices with width 1280+
+
+$num-columns: 12;
+
+.image-slider {
+  margin: 0 0 5px 0;
+  .controls {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: $borderRadius 0 $borderRadius 0;
+
+    a {
+      font-weight: bolder;
+      font-size: 1.1em;
+      display: block;
+      float: left;
+      padding: 9px 10px 7px 10px;
+      &.big {
+        font-size: 1.85em;
+        padding: 0 10px 4px 10px;
+      }
+      &:first-child {
+        border-radius: $borderRadius 0 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 $borderRadius 0;
+      }
+      &:hover, &:active {
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+  .cropped {
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+    overflow: hidden;
+    border-radius: $borderRadius;
+
+    &.grabbing {
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
+
+    img {
+      border-radius: 0;
+      width: auto;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      height: 467px;
+      img {
+        // max width is set so that the zoom is right to see the concert hall
+        //max-width: 2400px;
+        max-width: 3000px;
+        // 15px shifted to top
+        // 400px shifted to left
+        margin: -15px 0 0 -400px;
+      }
+    }
+
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      height: 367px;
+      img {
+        // max width is set so that the zoom is right to see the concert hall
+        max-width: 2400px;
+        // 15px shifted to top
+        // 400px shifted to left
+        margin: -115px 0 0 -500px;
+      }
+    }
+
+    @media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+      height: 300px;
+      img {
+        // max width is set so that the zoom is right to see the concert hall
+        max-width: 2400px;
+        // 182px shifted to top
+        // 400px shifted to left
+        margin: -182px 0 0 -520px;
+      }
+    }
+
+    @media (max-width: $screen-xxs-max) {
+      height: 250px;
+      img {
+        // max width is set so that the zoom is right to see the concert hall
+        max-width: 2400px;
+        // 182px shifted to top
+        // 400px shifted to left
+        margin: -232px 0 0 -600px;
+      }
+    }
+  }
+  .thumbnail {
+    .thumbnail-inner {
+      margin: 0 auto; // centers the box
+      max-width: 450px;
+
+      .rectangle {
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+        cursor: grab;
+        background: rgba(255, 202, 0, 0.30);
+        position: absolute;
+        border-radius: $borderRadius;
+        box-shadow: 0px 0px 2px 3px #000;
+
+        &.grabbing {
+          cursor: -moz-grabbing;
+          cursor: -webkit-grabbing;
+          cursor: grabbing;
+        }
+      }
+      img {
+        cursor: pointer;
+        width: 100%;
+      }
+    }
+  }
+}

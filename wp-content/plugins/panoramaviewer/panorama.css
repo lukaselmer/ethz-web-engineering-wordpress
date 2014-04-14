@@ -1,0 +1,80 @@
+.image-slider {
+  margin: 0 0 5px 0; }
+  .image-slider .controls {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px 0 10px 0; }
+    .image-slider .controls a {
+      font-weight: bolder;
+      font-size: 1.1em;
+      display: block;
+      float: left;
+      padding: 9px 10px 7px 10px; }
+      .image-slider .controls a.big {
+        font-size: 1.85em;
+        padding: 0 10px 4px 10px; }
+      .image-slider .controls a:first-child {
+        border-radius: 10px 0 0 0; }
+      .image-slider .controls a:last-child {
+        border-radius: 0 0 10px 0; }
+      .image-slider .controls a:hover, .image-slider .controls a:active {
+        background: rgba(255, 255, 255, 0.8); }
+    .image-slider .controls:after {
+      content: '';
+      display: block;
+      clear: both; }
+  .image-slider .cropped {
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+    overflow: hidden;
+    border-radius: 10px; }
+    .image-slider .cropped.grabbing {
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+      cursor: grabbing; }
+    .image-slider .cropped img {
+      border-radius: 0;
+      width: auto; }
+    @media (min-width: 1200px) {
+      .image-slider .cropped {
+        height: 467px; }
+        .image-slider .cropped img {
+          max-width: 3000px;
+          margin: -15px 0 0 -400px; } }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      .image-slider .cropped {
+        height: 367px; }
+        .image-slider .cropped img {
+          max-width: 2400px;
+          margin: -115px 0 0 -500px; } }
+    @media (min-width: 480px) and (max-width: 991px) {
+      .image-slider .cropped {
+        height: 300px; }
+        .image-slider .cropped img {
+          max-width: 2400px;
+          margin: -182px 0 0 -520px; } }
+    @media (max-width: 479px) {
+      .image-slider .cropped {
+        height: 250px; }
+        .image-slider .cropped img {
+          max-width: 2400px;
+          margin: -232px 0 0 -600px; } }
+  .image-slider .thumbnail .thumbnail-inner {
+    margin: 0 auto;
+    max-width: 450px; }
+    .image-slider .thumbnail .thumbnail-inner .rectangle {
+      cursor: -moz-grab;
+      cursor: -webkit-grab;
+      cursor: grab;
+      background: rgba(255, 202, 0, 0.3);
+      position: absolute;
+      border-radius: 10px;
+      box-shadow: 0px 0px 2px 3px #000; }
+      .image-slider .thumbnail .thumbnail-inner .rectangle.grabbing {
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+        cursor: grabbing; }
+    .image-slider .thumbnail .thumbnail-inner img {
+      cursor: pointer;
+      width: 100%; }
