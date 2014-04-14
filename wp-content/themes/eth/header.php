@@ -38,7 +38,6 @@
     <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch-rotatable.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jqmt/jquery.multitouch-orientable.js"></script>
 
-    <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/swipe_navi.js"></script>
 
     <!--
