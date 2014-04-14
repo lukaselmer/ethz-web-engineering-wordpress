@@ -33,7 +33,6 @@ function create_reviewer_post_type() {
     );
 }
 
-//flush_rewrite_rules(true);
 add_action('init', 'create_reviewer_post_type');
 
 
@@ -132,3 +131,6 @@ function eth_customize_css() {
 }
 
 add_action('wp_head', 'eth_customize_css');
+
+// TODO: remove this for production (I guess...)
+flush_rewrite_rules(true);

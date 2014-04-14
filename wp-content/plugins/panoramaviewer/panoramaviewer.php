@@ -16,11 +16,20 @@ class PageTemplateHook {
     // This class is inspired (and partly copied) from http://www.wpexplorer.com/wordpress-page-templates-plugin/
     private $templates;
 
-    public function __construct() {
-        $this->templates = array('weekly.php' => 'Weekly Recommendation');
+    private static $instance;
+
+    // Singleton... :-(
+    public static function get_instance() {
+        if (null == self::$instance) self::$instance = new PageTemplateHook();
+        return self::$instance;
+    }
+
+    private function __construct() {
+        $this->templates = array();
         add_filter('page_attributes_dropdown_pages_args', array($this, 'register_project_templates'));
         add_filter('wp_insert_post_data', array($this, 'register_project_templates'));
         add_filter('template_include', array($this, 'view_project_template'));
+        $this->templates = array('weekly.php' => 'Weekly Recommendation');
     }
 
     public function register_project_templates($atts) {
@@ -45,4 +54,4 @@ class PageTemplateHook {
     }
 }
 
-add_action('plugins_loaded', new PageTemplateHook());
+add_action('plugins_loaded', array('PageTemplateHook', 'get_instance'));
