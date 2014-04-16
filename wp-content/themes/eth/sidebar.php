@@ -56,12 +56,22 @@
                 <div>
                     <h3>Weekly Location Contest</h3>
                 </div>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/sydney-harbour-panorama1bl-thumbnail.jpg" alt=""/>
+                <?php $weekloop = new WP_Query(array('post_type' => 'panorama')); 
+                        while ($weekloop->have_posts()) : $weekloop->the_post(); 
+
+                    $thumb_id = get_post_thumbnail_id();
+                    $thumb_url = wp_get_attachment_image_src($thumb_id,array(254,54), true);        
+
+                    $image_url = $thumb_url[0];
+                    if (!isset($image_url)) $image_url = get_template_directory_uri() . '/images/sydney-harbour-panorama1bl-thumbnail.jpg.jpg';
+                ?>
+                <img src="<?php echo $image_url; ?>" alt=""/>
 
                 <div>
                     This week's location is:<br>
-                    <span>Sydney, Australia</span>
+                    <span><?php echo get_the_title(); ?></span>
                 </div>
+                <?php break; endwhile ?>
                 <div>
                     <a class="more" href="/weekly">Have a look!</a>
                 </div>
@@ -114,12 +124,22 @@
                 <div>
                     <h3>Weekly Location Contest</h3>
                 </div>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/sydney-harbour-panorama1bl-thumbnail.jpg" alt=""/>
+                <?php $weekloop = new WP_Query(array('post_type' => 'panorama')); 
+                        while ($weekloop->have_posts()) : $weekloop->the_post(); 
+
+                    $thumb_id = get_post_thumbnail_id();
+                    $thumb_url = wp_get_attachment_image_src($thumb_id,array(254,54), true);        
+
+                    $image_url = $thumb_url[0];
+                    if (!isset($image_url)) $image_url = get_template_directory_uri() . '/images/sydney-harbour-panorama1bl-thumbnail.jpg.jpg';
+                ?>
+                <img src="<?php echo $image_url; ?>" alt=""/>
 
                 <div>
                     This week's location is:<br>
-                    <span>Sydney, Australia</span>
+                    <span><?php echo get_the_title(); ?></span>
                 </div>
+                <?php break; endwhile ?>
                 <div>
                     <a href="/weekly">Have a look!</a>
                 </div>
