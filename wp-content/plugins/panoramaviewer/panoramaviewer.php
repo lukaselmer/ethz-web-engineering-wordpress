@@ -66,3 +66,81 @@ function panorama_assets() {
 }
 
 add_action('wp_enqueue_scripts', 'panorama_assets');
+
+
+//panorama type
+
+function create_panorama_post_type() {
+    register_post_type('panorama',
+        array(
+            'labels' => array(
+                'name' => __('Panoramas'),
+                'singular_name' => __('Panorama'),
+                'add_new' => __('Add new panorama'),
+                'add_new_item' => __('Add new panorama'),
+                'edit_item' => __('Add new panorama'),
+                'new_item' => __('New panorama'),
+                'view_item' => __('View panorama'),
+                'search_items' => __('Search panorama'),
+                'not_found' => __('No reviewers found'),
+                'not_found_in_trash' => __('No panorama found in trash'),
+                'parent_item_colon' => ''
+            ),
+            'description' => 'Panorama views for the weekly page.',
+            'public' => true,
+            'has_archive' => true,
+            'hierarchical' => false,
+            'rewrite' => array('slug' => 'panorama'),
+            'supports' => array('title', 'thumbnail'),
+            'publicly_queryable' => false,
+        )
+    );
+}
+
+add_action('init', 'create_panorama_post_type');
+
+function panorama_admin_init() {
+    add_meta_box("prodInfo-meta", "Panorama Options", "panorama_meta_options", "panorama", "normal", "high");
+}
+
+function panorama_meta_options() {
+    global $post;
+    $custom = get_post_custom($post->ID);
+    ?>
+    <style>
+        .opt-admin-custom label {
+            display: block;
+            margin: 10px 0 0 0;
+        }
+    </style>
+
+    <div class="opt-admin-custom">
+        <label for="description">Description*:</label>
+        <input id="description" required name="description" value="<?php echo $custom["description"][0]; ?>"/>
+    </div>
+
+    <div class="opt-admin-custom">
+        <label for="cite">Cite*:</label>
+        <input id="cite" required name="cite" value="<?php echo $custom["cite"][0]; ?>"/>
+    </div>
+
+    <div class="opt-admin-custom">
+        <label for="role">Reviewer ID*:</label>
+        <input id="reviewer-id" required name="reviewer-id" value="<?php echo $custom["reviewer"][0]; ?>"/>
+    </div>
+<?php
+}
+
+function save_panorama_meta_options() {
+    global $post;
+
+    if (isset($_POST["reviewer-id"]))
+        update_post_meta($post->ID, "reviewer", intval($_POST["reviewer-id"]));
+
+    foreach (array("description", "cite") as $val)
+        if (isset($_POST[$val]))
+            update_post_meta($post->ID, $val, $_POST[$val]);
+}
+
+add_action('admin_init', 'panorama_admin_init');
+add_action('save_post', 'save_panorama_meta_options');

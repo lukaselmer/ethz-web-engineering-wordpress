@@ -5,19 +5,24 @@
 
 
 get_header();
-
+$loop = new WP_Query(array('post_type' => 'panorama'));
 ?>
-<?php while (have_posts()) : the_post(); ?>
+<?php while ($loop->have_posts()) : $loop->the_post(); ?>
     <article class="weekly">
 
-        <h3><a href="#"><?php the_title() ?></a></h3>
-
+        <h3><a href="#">ETH suggests..</a></h3>
+        <?php echo get_post_gallery($post, false)['ids'];  ?>
         <?php
-        $ids = get_post_gallery($post, false)['ids'];
-        $arr = explode(',', $ids);
-        $imageId = $arr[array_rand($arr)];
-        $image_url = wp_get_attachment_url($imageId);
-        if (!isset($image_url)) $image_url = get_template_directory_uri() . '/images/sydney-harbour-panorama1bl.jpg';
+            $thumb_id = get_post_thumbnail_id();
+            $thumb_url = wp_get_attachment_image_src($thumb_id,'full', true);        
+
+            $image_url = $thumb_url[0];
+            if (!isset($image_url)) $image_url = get_template_directory_uri() . '/images/sydney-harbour-panorama1bl.jpg';
+        //$ids = get_post_gallery($post, false)['ids'];
+        //$arr = explode(',', $ids);
+        //$imageId = $arr[array_rand($arr)];
+        //$image_url = wp_get_attachment_url($imageId);
+        //if (!isset($image_url)) $image_url = get_template_directory_uri() . '/images/sydney-harbour-panorama1bl.jpg';
         ?>
 
         <div class="image-slider">
@@ -44,24 +49,24 @@ get_header();
 
         add_filter('post_gallery', 'disable_auto_gallery', 10, 2);
 
-
-        the_content();
-        edit_post_link();
         $custom_fields = get_post_custom();
-
+        $reviewer_id = intval($custom_fields['reviewer'][0]);
+        $description = $custom_fields['description'][0];
         $cite = $custom_fields['cite'][0];
-        if (!isset($cite)) update_post_meta($post->ID, 'cite', '"A life without travel is a life unlived"');
+       // if (!isset($cite)) update_post_meta($reviewer_id, 'cite', '"A life without travel is a life unlived"');
 
-        $author = $custom_fields['author'][0];
-        if (!isset($author)) update_post_meta($post->ID, 'author', 'Mr. Anderson');
+        $author = get_the_title($reviewer_id);// $custom_fields['author'][0];
+        //if (!isset($author)) update_post_meta($post->ID, 'author', 'Mr. Anderson');
+
         ?>
-
+        <h3>This week's winner is... <?php echo the_title() ?></h3>
+        <p><?php echo $description ?></p>
         <blockquote>
-            <?php echo $cite ?>
+            "<?php echo $cite ?>"
 
             <div>
-                <?php if (has_post_thumbnail()) {
-                    $str = get_the_post_thumbnail(get_the_ID(), 'full');
+                <?php if (has_post_thumbnail($reviewer_id)) {
+                    $str = get_the_post_thumbnail($reviewer_id, 'full');
                     $str = preg_replace('/width=\"\d+\"/', '', $str);
                     $str = preg_replace('/height=\"\d+\"/', '', $str);
                     $str = preg_replace('/attachment-full /', '', $str);
@@ -73,7 +78,9 @@ get_header();
         </blockquote>
 
     </article>
-<?php endwhile;
+<?php 
+break; 
+endwhile;
 
 get_sidebar();
 get_footer();
