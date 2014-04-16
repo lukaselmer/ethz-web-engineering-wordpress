@@ -134,3 +134,40 @@ add_action('wp_head', 'eth_customize_css');
 
 // TODO: remove this for production (I guess...)
 flush_rewrite_rules(true);
+
+//metabox
+function cd_meta_box_add()
+{
+    add_meta_box( 'my-meta-box-id', 'ThyHotel Page Attributes', 'cd_meta_box_cb', 'page', 'normal', 'high' );
+}
+add_action( 'add_meta_boxes', 'cd_meta_box_add' );
+
+function cd_meta_box_cb()
+{
+    $values = get_post_custom( $post->ID );
+    $selected = isset( $values['sidebar'] ) ? esc_attr( $values['sidebar'][0] ) : ”;
+    ?>     
+    <p>
+        <label for="my_meta_box_select">Sidebar</label>
+        <select name="my_meta_box_select" id="my_meta_box_select">
+            <option value="random" <?php selected( $selected, 'random' ); ?>>Random</option>
+            <option value="reviews" <?php selected( $selected, 'reviews' ); ?>>Reviews</option>
+            <option value="reviewers" <?php selected( $selected, 'reviewers' ); ?>>Reviewers</option>
+        </select>
+    </p>
+    <?php 
+}
+
+add_action( 'save_post', 'cd_meta_box_save' );
+function cd_meta_box_save( $post_id )
+{
+    // Bail if we're doing an auto save
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+     
+    // if our current user can't edit this post, bail
+    if( !current_user_can( 'edit_post' ) ) return;
+      
+    if( isset( $_POST['my_meta_box_select'] ) )
+        update_post_meta( $post_id, 'sidebar', esc_attr( $_POST['my_meta_box_select'] ) );
+}
+?>

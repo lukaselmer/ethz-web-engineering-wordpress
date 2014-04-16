@@ -1,8 +1,12 @@
 </div>
 </section>
 
+<?php
 
-<?php if (mt_rand(0, 1) == 0) { ?>
+  $custom_fields = get_post_custom();
+  $sidebar_flag_field = $custom_fields['sidebar'];
+?>
+<?php if (($sidebar_flag_field['0'] == 'reviewers' or mt_rand(0, 1) == 0) and $sidebar_flag_field['0'] <> 'reviews') { ?>
 
     <aside class="col-md-content-right">
         <div class="right-content">
